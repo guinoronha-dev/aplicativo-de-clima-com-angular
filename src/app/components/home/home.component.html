@@ -1,0 +1,66 @@
+<div class="window">
+    <div class="container">
+        <div class="left-panel height">
+
+            <div class="search">
+                <input [(ngModel)]="city" type="text" placeholder="Pesquise uma cidade" required
+                    (ngModelChange)="validateInput()">
+                <button (click)="getWeather()">
+                    <span class="material-symbols-outlined">
+                        search
+                    </span>
+                </button>
+            </div>
+            <div *ngIf="error" class="error-message">
+                <p>Cidade não encontrada, pesquise novamente</p>
+            </div>
+            <div *ngIf="query" class="weather-info">
+                <div class="weather-image">
+                    <img *ngIf="weatherIconURL" [src]="weatherIconURL" alt="Ícone do clima">
+                </div>
+                <div class="weather-card">
+                    <h2>{{temperature| number:'1.0-0'}}°C</h2>
+                    <p> {{weatherDescription}}</p>
+                    <div class="date">
+                        <p>{{currentTime}}</p>
+                    </div>
+                    <h1>{{currentCity}}</h1>
+                </div>
+            </div>
+        </div>
+        <div class="right-panel height">
+            <div class="card">
+                <p>Vento</p>
+                <h3>{{wind}} km/h</h3>
+            </div>
+            <div class="card">
+                <p>Umidade</p>
+                <h3>{{humidity}}%</h3>
+            </div>
+            <div class="card">
+                <p>Sensação Térmica</p>
+                <h3>{{fellsLike| number:'1.0-0'}}°C</h3>
+            </div>
+            <div class="card">
+                <p>Temperatura Mínima</p>
+                <h3>{{tempMin| number:'1.0-0'}}°C</h3>
+            </div>
+            <div class="card">
+                <p>Temperatura Máxima</p>
+                <h3>{{tempMax| number:'1.0-0'}}°C</h3>
+            </div>
+            <div class="card">
+                <p>Pressão Atmosférica</p>
+                <h3>{{pressure}} mb</h3>
+            </div>
+            <div class="card">
+                <p>Nuvens</p>
+                <h3>{{clouds}}%</h3>
+            </div>
+            <div class="card">
+                <p>Visibilidade</p>
+                <h3>{{visibility / 1000}} km</h3>
+            </div>
+        </div>
+    </div>
+</div>
